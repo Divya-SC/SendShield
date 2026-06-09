@@ -26,6 +26,57 @@ Crypto transactions are irreversible. SendShield provides an additional safety l
 * Warning Popups on Supported Pages
 * External JSON-Based Threat Database (`wallets.json`)
 
+## Testing SendShield
+
+SendShield currently uses a demonstration threat database for testing and validation purposes.
+
+### Test Wallet Addresses
+
+#### 🚫 Sanctioned Wallet
+
+```text
+0x72a5843cc08275c8171e582972aa4fda8c397b2a
+```
+
+Expected Result:
+
+* Displays a **BLOCKED** warning
+* Indicates the wallet appears on sanctions lists
+
+#### 🔴 Scam Wallet
+
+```text
+0x0000000000000000000000000000000000000001
+```
+
+Expected Result:
+
+* Displays a **SCAM WARNING**
+* Indicates the wallet has been reported for fraud
+
+#### ⚠ High-Risk Wallet
+
+```text
+0x9999999999999999999999999999999999999999
+```
+
+Expected Result:
+
+* Displays a **HIGH RISK** warning
+* Indicates the wallet has been linked to phishing activity
+
+### How to Test
+
+1. Install SendShield in Chrome.
+2. Open a supported cryptocurrency withdrawal or wallet address input page.
+3. Paste one of the test wallet addresses above into the address field.
+4. Verify that SendShield displays the appropriate security warning.
+
+### Note
+
+The current version uses a demonstration threat database to validate wallet detection and warning workflows. Future versions will integrate additional intelligence sources, sanctions data, community reports, and external threat intelligence feeds.
+
+
 ## Current Version
 
 ### SendShield v1.0

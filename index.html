@@ -1,79 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pre-Send Crypto Safety Check</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SendShield</title>
+
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
   <main class="app">
-    <section class="card">
 
-      <p class="eyebrow">Pre-Send Crypto Safety Check</p>
-      <h1>Check before you send crypto</h1>
-      <p class="intro">
-        Checks wallet activity, sanctions exposure, scam intelligence,
-        and high-risk blockchain indicators before funds are sent.
-      </p>
-      
-      <div class="intel-badges">
-        <span>Blockscout</span>
-        <span>OFAC</span>
-        <span>Scam Intelligence</span>
-        <span>Multi-Chain</span>
+    <div class="card">
+
+      <div class="hero">
+        <div class="shield">🛡️</div>
+
+        <h1>SendShield</h1>
+
+        <p class="subtitle">
+          Prevent scams before you send crypto.
+        </p>
       </div>
 
-      <form id="riskForm" class="form">
-        <label>
-          Wallet Address
-          <input type="text" id="walletAddress" placeholder="Paste recipient wallet address" required />
-        </label>
+      <div class="badges">
+        <span>Scam Detection</span>
+        <span>Sanctions Screening</span>
+        <span>Wallet Verification</span>
+      </div>
 
-        <label>
-          Network
-          <select id="network" required>
-            <option value="">Select network</option>
-            <option value="Ethereum">Ethereum</option>
-            <option value="BNB Chain">BNB Chain</option>
-            <option value="Polygon">Polygon</option>
-            <option value="Arbitrum">Arbitrum</option>
-            <option value="Optimism">Optimism</option>
-            <option value="Avalanche">Avalanche</option>
-            <option value="Base">Base</option>
-            <option value="Tron">Tron</option>
-            <option value="Solana">Solana</option>
-            <option value="Bitcoin">Bitcoin</option>
-          </select>
-        </label>
+      <form id="riskForm">
 
-        <label>
-          Transaction Amount (USD)
-          <input type="number" id="amount" placeholder="Example: 1000" required />
-        </label>
+        <input
+          type="text"
+          id="walletAddress"
+          placeholder="Paste recipient wallet address"
+          required
+        >
 
-        <button type="submit">Run Safety Check</button>
+        <select id="network" required>
+          <option value="">Select Network</option>
+          <option value="Ethereum">Ethereum</option>
+          <option value="Polygon">Polygon</option>
+          <option value="Arbitrum">Arbitrum</option>
+          <option value="Base">Base</option>
+        </select>
 
-        <button id="generateReport" type="button">
-          Generate Safety Report
+        <button type="submit">
+          Check Wallet
         </button>
 
-        <button id="downloadPdf" type="button">
-          Download PDF Report
-        </button>
       </form>
 
-      <section id="result" class="result hidden"></section>
+      <section id="result"></section>
 
-      <section id="reportSection" class="report-card hidden">
-        <h2>Safety Report</h2>
-        <pre id="reportOutput"></pre>
-      </section>
+    </div>
 
-    </section>
   </main>
 
   <script src="script.js"></script>
+
 </body>
 </html>

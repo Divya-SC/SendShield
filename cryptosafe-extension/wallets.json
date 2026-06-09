@@ -1,0 +1,19 @@
+{
+  "0x72a5843cc08275c8171e582972aa4fda8c397b2a": {
+    "type": "blocked",
+    "title": "🚫 BLOCKED",
+    "message": "This wallet appears on sanctions lists."
+  },
+
+  "0x0000000000000000000000000000000000000001": {
+    "type": "scam",
+    "title": "🔴 SCAM WARNING",
+    "message": "This wallet has been reported for fraud."
+  },
+
+  "0x9999999999999999999999999999999999999999": {
+  "type": "warning",
+  "title": "⚠ TEST DATABASE",
+  "message": "Loaded from wallets.json successfully."
+}
+}

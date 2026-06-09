@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "SendShield",
+  "version": "1.0",
+  "description": "Protect users from scam, sanctioned, and risky crypto addresses before sending funds.",
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "web_accessible_resources": [
+  {
+    "resources": ["wallets.json"],
+    "matches": ["<all_urls>"]
+  }
+]
+}
+

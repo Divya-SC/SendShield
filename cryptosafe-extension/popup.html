@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+  <title>SendShield</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>🛡️ SendShield</h1>
+
+    <input
+      type="text"
+      id="walletAddress"
+      placeholder="Paste wallet address"
+    >
+
+    <select id="network">
+      <option value="Ethereum">Ethereum</option>
+      <option value="Polygon">Polygon</option>
+      <option value="Arbitrum">Arbitrum</option>
+      <option value="Base">Base</option>
+    </select>
+
+    <button id="checkButton">
+      Check Wallet
+    </button>
+
+    <div id="result"></div>
+
+  </div>
+
+  <script src="popup.js"></script>
+
+</body>
+</html>

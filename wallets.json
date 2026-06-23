@@ -1,19 +1,25 @@
 {
-  "0x72a5843cc08275c8171e582972aa4fda8c397b2a": {
-    "type": "blocked",
-    "title": "🚫 BLOCKED",
-    "message": "This wallet appears on sanctions lists."
-  },
-
-  "0x0000000000000000000000000000000000000001": {
-    "type": "scam",
-    "title": "🔴 SCAM WARNING",
-    "message": "This wallet has been reported for fraud."
-  },
-
   "0x9999999999999999999999999999999999999999": {
-  "type": "warning",
-  "title": "⚠ TEST DATABASE",
-  "message": "Loaded from wallets.json successfully."
-}
+    "type": "warning",
+    "title": "⚠️ HIGH RISK ADDRESS",
+    "message": "This wallet has been linked to suspicious activity.",
+    "label": "Phishing Wallet",
+    "source": "SendShield Database"
+  },
+
+  "0x8888888888888888888888888888888888888888": {
+    "type": "scam",
+    "title": "🔴 SCAM ALERT",
+    "message": "Multiple scam reports have been associated with this address.",
+    "label": "Reported Scam Wallet",
+    "source": "Community Reports"
+  },
+
+  "0x7777777777777777777777777777777777777777": {
+    "type": "blocked",
+    "title": "🚫 SANCTIONS ALERT",
+    "message": "This address appears on sanctions or restricted wallet lists.",
+    "label": "Sanctioned Address",
+    "source": "Sanctions Screening"
+  }
 }

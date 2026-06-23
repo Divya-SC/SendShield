@@ -1,11 +1,13 @@
 {
   "0x9999999999999999999999999999999999999999": {
-    "type": "warning",
-    "title": "⚠️ HIGH RISK ADDRESS",
-    "message": "This wallet has been linked to suspicious activity.",
-    "label": "Phishing Wallet",
-    "source": "Community Reports"
-  },
+  "type": "warning",
+  "title": "⚠️ HIGH RISK ADDRESS",
+  "message": "This wallet has been linked to suspicious activity.",
+  "labels": ["Phishing Wallet", "Community Flagged"],
+  "network": "Ethereum",
+  "source": "Community Reports",
+  "lastUpdated": "2026-06-23"
+},
 
   "0x8888888888888888888888888888888888888888": {
     "type": "scam",

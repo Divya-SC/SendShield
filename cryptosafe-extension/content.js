@@ -1,17 +1,16 @@
-let warningDisplayed = false;
-let walletDatabase = {};
-fetch(chrome.runtime.getURL("wallets.json"))
-  .then(response => response.json())
-  .then(data => {
-    walletDatabase = data;
-    console.log("SendShield database loaded");
-  });
-function showWarning(type, title, message) {
-  if (warningDisplayed) {
-  return;
-}
+const SENDSHIELD_API =
+  "https://sendshield-api.divya-sc87.workers.dev";
 
-warningDisplayed = true;
+let warningDisplayed = false;
+
+
+function showWarning(type, title, message) {
+
+  if (warningDisplayed) {
+    return;
+  }
+
+  warningDisplayed = true;
 
   const existingBanner =
     document.getElementById("SendShield-banner");
@@ -25,21 +24,68 @@ warningDisplayed = true;
   banner.id = "SendShield-banner";
 
  banner.innerHTML = `
+ 
   <div style="
-    font-size:28px;
-    font-weight:bold;
-    margin-bottom:15px;
-  ">
-    ${title}
-  </div>
+  font-size:14px;
+  opacity:0.9;
+  margin-bottom:8px;
+">
+<div style="
+  font-size:32px;
+  font-weight:bold;
+  margin-bottom:25px;
+">
+  ${title}
+</div>
+  Risk Category
+</div>
 
-  <div style="
-    font-size:18px;
-    line-height:1.6;
-    margin-bottom:20px;
-  ">
-    ${message}
-  </div>
+<div style="
+  font-size:22px;
+  font-weight:bold;
+  margin-bottom:20px;
+">
+  ${window.SendShieldLabel || "Risk Indicator"}
+</div>
+
+<div style="
+  font-size:14px;
+  opacity:0.9;
+  margin-bottom:8px;
+">
+  Source
+</div>
+
+<div style="
+  font-size:18px;
+  margin-bottom:18px;
+">
+  ${window.SendShieldSource || "SendShield Database"}
+</div>
+
+<div style="
+  font-size:14px;
+  opacity:0.9;
+  margin-bottom:8px;
+">
+  Reason
+</div>
+
+<div style="
+  font-size:17px;
+  line-height:1.6;
+  margin-bottom:25px;
+">
+  ${message}
+</div>
+
+<div style="
+  font-size:12px;
+  opacity:0.8;
+  margin-bottom:20px;
+">
+  SendShield Threat Intelligence
+</div>
 
   <button
     id="SendShield-cancel"
@@ -47,46 +93,45 @@ warningDisplayed = true;
       background:#dc2626;
       color:white;
       border:none;
-      padding:14px;
+      padding:14px 20px;
       border-radius:10px;
       cursor:pointer;
-      font-weight:bold;
-      width:100%;
       font-size:16px;
+      font-weight:bold;
     "
   >
-    Cancel Transaction
+    Review Address
   </button>
 `;
 
   banner.style.position = "fixed";
-  banner.style.background = "#111827";
   banner.style.top = "50%";
   banner.style.left = "50%";
   banner.style.transform = "translate(-50%, -50%)";
-  banner.style.textAlign = "center";
   banner.style.zIndex = "999999";
-  banner.style.width = "500px";
+  banner.style.width = "460px";
   banner.style.maxWidth = "90%";
-  banner.style.padding = "24px";
+  banner.style.padding = "30px";
   banner.style.borderRadius = "20px";
+  banner.style.textAlign = "center";
   banner.style.color = "white";
   banner.style.fontFamily = "Arial, sans-serif";
   banner.style.boxShadow = "0 10px 30px rgba(0,0,0,0.4)";
 
-  if (type === "blocked") {
-    banner.style.background = "#1f2937";
-    banner.style.backdropFilter = "none";
-    banner.style.opacity = "1";
-    banner.style.border = "2px solid #d4d4d8";
-  }
+if (type === "blocked") {
+  banner.style.background = "#1f2937";
+  banner.style.border = "3px solid #9ca3af";
+}
 
-  if (type === "scam") {
-    banner.style.background = "#92400e";
-    banner.style.backdropFilter = "none";
-    banner.style.opacity = "1";
-    banner.style.border = "2px solid #ef4444";
-  }
+if (type === "scam") {
+  banner.style.background = "#7f1d1d";
+  banner.style.border = "3px solid #ef4444";
+}
+
+if (type === "warning") {
+  banner.style.background = "#92400e";
+  banner.style.border = "3px solid #f59e0b";
+}
 
   document.body.appendChild(banner);
 
@@ -94,77 +139,50 @@ warningDisplayed = true;
     .getElementById("SendShield-cancel")
     .addEventListener("click", () => {
 
-  banner.remove();
+      banner.remove();
+      warningDisplayed = false;
 
-  warningDisplayed = false;
     });
 }
 
-function checkPageForWallets() {
-
-  const pageText =
-    document.body.innerText.toLowerCase();
-
-  sanctionedWallets.forEach(wallet => {
-
-    if (pageText.includes(wallet)) {
-
-      showWarning(
-        "blocked",
-        "🚫 SendShield Warning",
-        "🚫 This wallet appears on sanctions lists.<br><br>Do not send funds."
-      );
-
-    }
-
-  });
-
-  scamWallets.forEach(wallet => {
-
-    if (pageText.includes(wallet)) {
-
-      showWarning(
-        "scam",
-        "🔴 SendShield Warning",
-        "Fraud reports detected. Do not send funds."
-      );
-
-    }
-
-  });
-
-}
-
-document.addEventListener("input", function(event) {
+// Detect wallet input
+document.addEventListener("input", async function(event) {
 
   const value =
-    event.target.value?.toLowerCase();
-
-  const existingBanner =
-    document.getElementById("SendShield-banner");
-
-  if (
-    existingBanner &&
-    !walletDatabase[value]) 
-    {existingBanner.remove();
-      warningDisplayed = false;
-    }
+    event.target.value?.trim().toLowerCase();
 
   if (!value) {
     return;
   }
 
-const walletInfo = walletDatabase[value];
+  try {
 
-if (walletInfo) {
+    const response = await fetch(
+      `${SENDSHIELD_API}/?address=${value}`
+    );
 
-  showWarning(
-    walletInfo.type,
-    walletInfo.title,
-    walletInfo.message
-  );
+    const result = await response.json();
 
-}
+    if (result.found) {
+
+      window.SendShieldLabel = result.label;
+      window.SendShieldSource = result.source;
+
+showWarning(
+  result.risk,
+  result.title,
+  result.message
+);
+
+    }
+
+  } catch (error) {
+
+    console.error(
+      "SendShield API error",
+      error
+    );
+
+  }
 
 });
-walletDatabase

@@ -5,7 +5,9 @@
 <h1 align="center">SendShield</h1>
 
 <p align="center">
-Protecting users from risky crypto wallet addresses before funds are sent.
+Threat Intelligence for Web3 Transactions
+
+SendShield alerts users when wallet addresses match known scam, sanctioned, or high-risk destinations before funds leave their wallet.
 </p>
 
 # SendShield

@@ -4,7 +4,7 @@
     "title": "⚠️ HIGH RISK ADDRESS",
     "message": "This wallet has been linked to suspicious activity.",
     "label": "Phishing Wallet",
-    "source": "SendShield Database"
+    "source": "Community Reports"
   },
 
   "0x8888888888888888888888888888888888888888": {

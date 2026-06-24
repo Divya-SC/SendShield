@@ -16,6 +16,25 @@
       "source": "Community Reports",
       "message": "This wallet has been linked to suspicious activity.",
       "lastUpdated": "2026-06-23"
-    }
+    },
+    {
+  "address": "0x8888888888888888888888888888888888888888",
+  "category": "Scam",
+  "labels": ["Reported Scam Wallet"],
+  "source": "Community Reports"
+},
+{
+  "address": "0x7777777777777777777777777777777777777777",
+  "category": "Sanctioned",
+  "labels": ["Sanctioned Wallet"],
+  "source": "Sanctions Screening"
+},
+{
+  "address": "0x6666666666666666666666666666666666666666",
+  "category": "Drainer",
+  "labels": ["Known Drainer Wallet"],
+  "source": "Threat Intelligence"
+}
+
   ]
 }

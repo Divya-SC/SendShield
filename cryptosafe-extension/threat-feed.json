@@ -1,0 +1,20 @@
+{
+  "metadata": {
+    "name": "SendShield Threat Feed",
+    "version": "3.0",
+    "lastUpdated": "2026-06-23",
+    "description": "Community and open-source wallet intelligence feed for SendShield."
+  },
+  "wallets": [
+    {
+      "address": "0x9999999999999999999999999999999999999999",
+      "type": "warning",
+      "title": "⚠️ HIGH RISK ADDRESS",
+      "labels": ["Phishing Wallet", "Community Flagged"],
+      "network": "Ethereum",
+      "source": "Community Reports",
+      "message": "This wallet has been linked to suspicious activity.",
+      "lastUpdated": "2026-06-23"
+    }
+  ]
+}

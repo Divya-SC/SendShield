@@ -19,21 +19,36 @@
     },
     {
   "address": "0x8888888888888888888888888888888888888888",
+  "type": "scam",
+  "title": "🔴 SCAM ALERT",
   "category": "Scam",
   "labels": ["Reported Scam Wallet"],
-  "source": "Community Reports"
+  "network": "Ethereum",
+  "source": "Community Reports",
+  "message": "This wallet has been reported for scam-related activity.",
+  "lastUpdated": "2026-06-24"
 },
 {
   "address": "0x7777777777777777777777777777777777777777",
+  "type": "blocked",
+  "title": "🚫 SANCTIONS ALERT",
   "category": "Sanctioned",
   "labels": ["Sanctioned Wallet"],
-  "source": "Sanctions Screening"
+  "network": "Ethereum",
+  "source": "Sanctions Screening",
+  "message": "This wallet appears on sanctions or restricted wallet lists.",
+  "lastUpdated": "2026-06-24"
 },
 {
   "address": "0x6666666666666666666666666666666666666666",
+  "type": "warning",
+  "title": "⚠️ DRAINER ALERT",
   "category": "Drainer",
   "labels": ["Known Drainer Wallet"],
-  "source": "Threat Intelligence"
+  "network": "Ethereum",
+  "source": "Threat Intelligence",
+  "message": "This wallet has been associated with wallet-draining campaigns.",
+  "lastUpdated": "2026-06-24"
 }
 
   ]

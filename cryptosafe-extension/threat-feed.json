@@ -10,6 +10,7 @@
       "address": "0x9999999999999999999999999999999999999999",
       "type": "warning",
       "title": "⚠️ HIGH RISK ADDRESS",
+      "category": "Phishing",
       "labels": ["Phishing Wallet", "Community Flagged"],
       "network": "Ethereum",
       "source": "Community Reports",
